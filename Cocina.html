@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocina Grand Opening Invitation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-orange: #ff6f00;      /* Vibrant Accent Orange */
+            --bg-black: #0c0c0c;            /* Rich Dark Backdrop */
+            --card-black: #161616;          /* Matte Black for Form Background */
+            --pure-white: #ffffff;          /* Crisp White Text */
+            --muted-white: #b3b3b3;         /* Balanced Sub-text Accent */
+            --border-color: #2a2a2a;        /* Elegant dark separator borders */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body, html {
+            height: 100%;
+            background-color: var(--bg-black);
+            color: var(--pure-white);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* View Containers */
+        .view-section {
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* VIEW 1: IMMERSIVE COVER PAGE */
+        #cover-view {
+            background: linear-gradient(135deg, rgba(12, 12, 12, 0.95) 40%, rgba(255, 111, 0, 0.15) 100%),
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+            text-align: center;
+        }
+
+        .cover-frame {
+            border: 2px solid var(--primary-orange);
+            padding: 60px 40px;
+            max-width: 650px;
+            width: 100%;
+            background: rgba(12, 12, 12, 0.85);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+
+        .tagline {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--muted-white);
+            margin-bottom: 20px;
+        }
+
+        .brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--pure-white);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .brand-name span { color: var(--primary-orange); }
+
+        .event-title {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: var(--primary-orange);
+            margin-bottom: 40px;
+        }
+
+        /* Action Buttons */
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-orange);
+            color: var(--pure-white);
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 18px 45px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 111, 0, 0.3);
+        }
+
+        .action-btn:hover {
+            background-color: var(--pure-white);
+            color: var(--bg-black);
+            transform: translateY(-2px);
+        }
+
+        /* VIEW 2: RESERVATION CONTAINER */
+        #form-view {
+            background-color: var(--bg-black);
+        }
+
+        .form-container {
+            max-width: 550px;
+            width: 100%;
+            background-color: var(--card-black);
+            border: 1px solid var(--border-color);
+            padding: 45px 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .form-top-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-orange);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .form-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            font-size: 14px;
+            color: var(--muted-white);
+        }
+
+        /* Form Layouts */
+        .form-group { margin-bottom: 24px; }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-orange);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-input {
+            width: 100%;
+            background-color: #1f1f1f;
+            border: 1px solid var(--border-color);
+            color: var(--pure-white);
+            padding: 14px 16px;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus { border-color: var(--primary-orange); }
+
+        /* Time Slots Grid */
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .time-slot-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0; height: 0;
+        }
+
+        .time-slot-label {
+            display: block;
+            text-align: center;
+            padding: 14px 10px;
+            background-color: #1f1f1f;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+
+        .time-slot-option input[type="radio"]:checked + .time-slot-label {
+            background-color: var(--primary-orange);
+            border-color: var(--primary-orange);
+            color: var(--pure-white);
+            font-weight: 600;
+        }
+
+        .submit-btn { width: 100%; margin-top: 15px; }
+
+        /* Success Overlay */
+        .success-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(12, 12, 12, 0.95);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 999; opacity: 0; pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .success-overlay.active { opacity: 1; pointer-events: auto; }
+
+        .success-card {
+            background-color: var(--card-black);
+            border: 1px solid var(--primary-orange);
+            padding: 40px; text-align: center; max-width: 500px; width: 100%;
+        }
+
+        .success-icon { font-size: 50px; color: var(--primary-orange); margin-bottom: 20px; }
+
+        @media (max-width: 600px) {
+            .brand-name { font-size: 50px; }
+            .time-slots-grid { grid-template-columns: 1fr; }
+            .form-container { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="cover-view" class="view-section">
+        <div class="cover-frame">
+            <p class="tagline">Join us for the launch of</p>
+            <h1 class="brand-name">COCINA<span>.</span></h1>
+            <p class="event-title">Grand Opening</p>
+            
+            <button class="action-btn" onclick="scrollToForm()">Book Table</button>
+        </div>
+    </section>
+
+    <section id="form-view" class="view-section">
+        
+        <div class="form-container">
+            <div class="form-top-line"></div>
+            <div class="form-header">
+                <h2>Reservation</h2>
+                <p>Secure your exclusive grand opening experience</p>
+            </div>
+
+            <form id="reservationForm" onsubmit="handleReservationSubmit(event)">
+                <div class="form-group">
+                    <label for="guestName">Full Name</label>
+                    <input type="text" id="guestName" class="form-input" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reservationDate">Date of Attendance</label>
+                    <input type="date" id="reservationDate" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Seating Window</label>
+                    <div class="time-slots-grid">
+                        <div class="time-slot-option">
+                            <input type="radio" id="slot1" name="timeSlot" value="12:00 PM - 2:00 PM" required>
+                            <label for="slot1" class="time-slot-label">12:00 PM - 2:00 PM</label>
+                        </div>
+                        <div class="time-slot-option">
+                            <input type="radio" id="slot2" name="timeSlot" value="2:00 PM - 4:00 PM">
+                            <label for="slot2" class="time-slot-label">2:00 PM - 4:00 PM</label>
+                        </div>
+                        <div class="time-slot-option">
+                            <input type="radio" id="slot3" name="timeSlot" value="4:00 PM - 6:00 PM">
+                            <label for="slot3" class="time-slot-label">4:00 PM - 6:00 PM</label>
+                        </div>
+                        <div class="time-slot-option">
+                            <input type="radio" id="slot4" name="timeSlot" value="6:00 PM - 8:00 PM">
+                            <label for="slot4" class="time-slot-label">6:00 PM - 8:00 PM</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="partySize">Number of Guests</label>
+                    <input type="number" id="partySize" class="form-input" min="1" max="20" placeholder="How many are you?" required>
+                </div>
+
+                <button type="submit" class="action-btn submit-btn">Confirm RSVP</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="successOverlay" class="success-overlay">
+        <div class="success-card">
+            <div class="success-icon">✓</div>
+            <h3 style="font-family: 'Cinzel', serif; letter-spacing: 1px; margin-bottom: 15px;">Reservation Confirmed</h3>
+            <p id="successMessage" style="line-height: 1.6; font-size: 16px; color: #ffffff;"></p>
+            <button class="action-btn" style="padding: 12px 30px; font-size: 12px; margin-top: 25px;" onclick="closeSuccessModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById('form-view').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Formats raw 'YYYY-MM-DD' values into a cleaner format (e.g., "October 24, 2026")
+        function formatDateString(dateStr) {
+            if(!dateStr) return "";
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const dateObj = new Date(dateStr);
+            return isNaN(dateObj) ? dateStr : dateObj.toLocaleDateString('en-US', options);
+        }
+
+        function handleReservationSubmit(event) {
+            event.preventDefault();
+
+            // Gather values directly from the user inputs
+            const name = document.getElementById('guestName').value;
+            const dateInput = document.getElementById('reservationDate').value;
+            const selectedTimeSlot = document.querySelector('input[name="timeSlot"]:checked').value;
+            const partySize = document.getElementById('partySize').value;
+            
+            // Format layout into readable format 
+            const formattedDate = formatDateString(dateInput);
+
+            // Constructing your exact final feedback text block layout dynamically
+            const msgElement = document.getElementById('successMessage');
+            
+            // Pluralize "guest" based on count input
+            const guestText = partySize == 1 ? "1 guest" : `${partySize} guests`;
+
+            msgElement.innerHTML = `Thank you <strong>${name}</strong> for reserving a table, see you on <strong>${formattedDate}</strong> at <strong>${selectedTimeSlot}</strong> with <strong>${guestText}</strong>.`;
+            
+            // Reveal the confirmation overlay window context element
+            document.getElementById('successOverlay').classList.add('active');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successOverlay').classList.remove('active');
+            document.getElementById('reservationForm').reset();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Auto-restrict calendar picking to future/current dates
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('reservationDate').setAttribute('min', today);
+    </script>
+</body>
+</html>
